@@ -1,0 +1,355 @@
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+
+/*Шрифты*/
+@font-face {
+	font-family: 'Marvin';
+	src: url('../fonts/Marvin-font.eot');
+	src: local('☺'),url('../fonts/Marvin-font.otf') format("opentype"), url('../fonts/Marvin-font.woff') format('woff'), url('../fonts/Marvin-font.ttf') format('truetype'), url('../fonts/Marvin-font.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/*--------------------*/
+
+
+/*Канвас*/
+.canvasShadowBorder {
+    background: #0d233d;
+    padding: 14px;
+    box-shadow: inset 0 0 10px 5px #7ff,
+                inset -1px 0 5px 2px #7ff,
+                inset 1px 0 5px 2px #7ff;
+    border-radius: 24px;
+    border: 1px solid #9ff;
+    width: fit-content;
+    height: fit-content;
+}
+/*--------------------*/
+
+
+/*Тело*/
+body {
+    background: url(../img/Space.jpg);
+    background-size: cover;
+		font-family: Marvin;
+		overflow: hidden;
+}
+
+.out {
+    width: fit-content;
+    height: fit-content;
+    padding: 7px;
+    background: #2d6277;
+    border-radius: 27px;
+    box-shadow: inset 0 0 7px 4px #7ff, inset 0 0 7px 1px #7ff;
+}
+
+.out>div {
+    background: #20549a;
+    box-shadow: inset 0 0 10px 2px #0af;
+    border-radius: 20px;
+    display: flex;
+}
+
+.red {
+    width: 100px;
+    background: #d06;
+}
+
+.purple {
+    width: 130px;
+    background: #91b;
+}
+
+.ellipse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+		font-size: 30px;
+    height: 40px;
+    border-radius: 18px;
+    box-shadow: 0 0 4px 0px #fff6, inset 0 0 4px 0px #fff4;
+}
+
+.fifty {
+    border-start-start-radius: 0px!important;
+    border-start-end-radius: 0px!important;
+}
+
+.back {
+    width: 100%;
+    height: 100%;
+    background: #0007;
+    position: absolute;
+    left: 0;
+    top: 0;
+		display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*--------------------*/
+
+
+/*Шапка*/
+header {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: space-between;
+		align-items: flex-end;
+}
+
+.out.fifty {
+    margin-top: -7px;
+}
+
+.bar.fifty {
+    margin-top: -10px;
+    padding-top: 10px;
+}
+
+.bar {
+	width: 70vw;
+	display: flex;
+	justify-content: space-around;
+  height: 90px;
+}
+
+.bar .ellipse {margin: auto;}
+
+.progress_block {
+    background: #0c2d59;
+    border-radius: 15px;
+    color: #fff;
+    width: 65%;
+    box-shadow: 0 0 4px 0px #fff4;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 26px;
+    height: 75px;
+    justify-content: center;
+}
+
+.progress_block p {
+    margin-bottom: 5px;
+}
+
+.progress {
+    width: 90%;
+		background: #20549a;
+		border-radius: 13px;
+}
+
+progress[value]::-webkit-progress-bar {
+    background: -moz-linear-gradient(top, #001127, #032452);
+    background: -webkit-linear-gradient(top, #001127, #032452);
+    background: -o-linear-gradient(top, #001127,#032452);
+    background: -ms-linear-gradient(top, #001127, #032452);
+    background: linear-gradient(to bottom, #001127, #032452);
+    height: 24px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px 1px #032452;
+}
+
+progress[value]::-webkit-progress-value {
+   background: #e0ff9f;
+   background: -moz-linear-gradient(top, #e0ff9f, #219d00 50%, #53ee00);
+   background: -webkit-linear-gradient(top, #e0ff9f, #219d00 50%, #53ee00);
+   background: -o-linear-gradient(top, #e0ff9f,#219d00 50%,#53ee00);
+   background: -ms-linear-gradient(top, #e0ff9f, #219d00 50%, #53ee00);
+   background: linear-gradient(to bottom, #e0ff9f,#219d00 50%, #53ee00);
+   border: 1px solid #53ee00;
+   box-shadow: 3px 0 3px rgb(0 0 0 / 50%);
+	 border-radius: 12px
+}
+/*--------------------*/
+
+/*Пауза*/
+#pause__btn {
+    width: 64px;
+    height: 64px;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: inherit;
+    background: inherit;
+    box-shadow: inherit;
+    display: flex;
+}
+
+.pause__line {
+    width: 10px;
+    height: 40px;
+    background: rgb(163,160,160);
+    background: radial-gradient(circle, rgba(163,160,160,1) 0%, rgba(234,234,234,1) 100%);
+    border-radius: 5px;
+}
+
+.pause__play {padding-left: 10%;}
+
+.pause__play img {
+    width: 50px;
+    height: 45px;
+}
+/*--------------------*/
+
+/*Приборная панель*/
+main {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.panel {
+    width: 380px;
+    height: 320px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.balance_of_moves {
+    margin: 0 auto;
+    width: 42%;
+    height: 50%;
+    background: #dd0066;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 30px 2px #fff, 0 0 10px 2px #fff7;
+    font-size: 75px;
+    color: #fff;
+}
+
+.score_block {
+    background: #0c2d59;
+    border-radius: 15px;
+    width: 75%;
+    color: #fff;
+    box-shadow: 0 0 4px 0px #fff4;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 26px;
+    padding: 12px;
+    line-height: 26px;
+}
+
+.score_txt {
+    margin: 4px;
+}
+
+.score_balance {
+    margin: 0px;
+}
+
+.mix_block {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+button#mix {
+    width: 235px;
+    border: 0;
+}
+/*--------------------*/
+
+/*Меню*/
+.menu {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	position: relative;
+}
+
+.lvl {
+    border-radius: 50%;
+    position: absolute;
+    left: -40px;
+    top: -40px;
+}
+
+.lvl>div {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    color: #fff;
+}
+
+header h2 {
+    color: #fff;
+    font-size: 60px;
+    margin: 10px 50px;
+}
+
+.menu button {
+    font-size: 28px;
+    margin: 10px auto;
+    box-shadow: 0 0 4px 0px #fff4;
+    background: #0c2d59;
+    border-radius: 15px;
+    color: #fff;
+    width: 200px;
+}
+
+header[data-toggle="2"] .pause__play, header[data-toggle="3"] .pause__play,
+header[data-toggle="1"] .pause__play, header[data-toggle="0"] .pause__line,
+header[data-toggle="1"] .back, header[data-toggle="0"] .Next,
+header[data-toggle="0"] .lose, header[data-toggle="0"] .win,
+header[data-toggle="2"] .Next, header[data-toggle="3"] .lose,
+header[data-toggle="2"] .win, header[data-toggle="2"] .pause-txt,
+header[data-toggle="3"] .pause-txt{
+    display: none;
+}
+
+header[data-toggle="0"] .pause {
+    z-index: 1;
+}
+/*--------------------*/
