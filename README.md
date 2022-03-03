@@ -1,5 +1,6 @@
 # Blast-game
 My first game
+***
+__Запуск через файл Blast.html__
 
-Запуск через файл Blast.html
-Launch file - Blast.html
+__Launch file - Blast.html__
