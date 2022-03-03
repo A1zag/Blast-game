@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blast</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+  </head>
+  <body>
+    <header data-toggle="1">
+      <div class="out fifty">
+        <div class="bar fifty">
+          <p class="moves red ellipse">0</p>
+          <div class="progress_block fifty">
+            <p>ПРОГРЕСС</p>
+            <progress class="progress" max="100" value="0"></progress>
+          </div><!--progress_block-->
+          <p class="max_score purple ellipse">0</p>
+        </div><!--bar-->
+      </div><!--out-->
+      <div class="out pause">
+        <div>
+          <button id="pause__btn">
+            <div class="pause__line"></div>
+            <div class="pause__line"></div>
+            <div class="pause__play"><img src="assets/img/play.png" alt=""> </div>
+          </button>
+        </div>
+      </div><!--pause-->
+      <div class="back">
+        <div class="out">
+          <div class="menu">
+            <div class="out lvl">
+              <div>
+                <p id="lvl">0</p>
+              </div>
+            </div>
+            <h2 class="win">Успех!!!</h2>
+            <h2 class="lose">Поражение :(</h2>
+            <h2 class="pause-txt">Пауза :-/</h2>
+            <button class="Next">Далее</button>
+            <button class="Replay">Повтор</button>
+            <!-- <button class="Settings">Настройки</button> -->
+            <button class="Exit">Выход</button>
+          </div>
+        </div>
+      </div><!--back-->
+    </header>
+    <main>
+      <div class="canvasShadowBorder">
+        <canvas id="canvasId"></canvas>
+      </div><!--canvasShadowBorder-->
+        <div class="right">
+        <div class="out">
+          <div class="panel">
+            <p class="balance_of_moves">0</p>
+            <div class="score_block">
+              <p class="score_txt">ОЧКИ:</p>
+              <p class="score_balance">0</p>
+            </div><!--score_block-->
+          </div><!--panel-->
+        </div><!--out-->
+        <div class="mix_block">
+          <p id="quantityMix" class="red ellipse">0</p>
+          <button id="mix" class="purple ellipse">перемешать</button>
+        </div><!--mix_block-->
+      </div><!--right-->
+    </main>
+    <script src="assets/js/GameArea.js" ></script>
+    <script src="assets/js/place.js" ></script>
+  </body>
+</html>
