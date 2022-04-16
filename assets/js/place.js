@@ -5,15 +5,18 @@ var canvas = document.getElementById("canvasId"),
     h = 7,//количество рядов
     lvl = 1,//текущий уровень
     quantityMix = 1,//количество перемешиваний
+    quantitySwap = 1,//количество порталов
     maxScore = 15,//нужное количество очков для победы
     moveBalance = 5,//остаток ходов
     qmx = quantityMix,
+    tp = quantitySwap,
     mbc = moveBalance,
     toggle = 1,
     num = 2,//необходимое количество для разрушения
     setCubes = 0,//количество кубиков в сэте
     cubes = [],//массив кубиков первый уровень (столбци)
     destroyItems = [],//список кубиков для разрушения
+    swapElem = [],//элементы для телепорта
     sizeY = 64,// размер ячейки
     sizeX = 64,// размер ячейки
     margin = 1,// промежутки между кубами
@@ -26,6 +29,7 @@ var canvas = document.getElementById("canvasId"),
     quantityMove = 0,//возможные ходы
     canvasId = "#canvasId",
     posCreateElem,
+    swapCount,
     shiftElem = new Map();
 
 function generateLevel() {//создает поле
@@ -34,6 +38,7 @@ function generateLevel() {//создает поле
   document.querySelector('header').setAttribute('data-toggle', 1);
   document.querySelector('.score_balance').innerHTML = 0;
   document.querySelector('#quantityMix').innerHTML = qmx;
+  document.querySelector('#quantitySwap').innerHTML = tp;
   document.querySelector('.progress').max = maxScore;
   document.querySelector('.progress').value = 0;
   document.querySelector('.max_score').innerHTML = maxScore;
@@ -140,7 +145,7 @@ function checkMove(){//проверка количества возможных 
     };
   };
   document.querySelector('.moves').innerHTML = quantityMove;
-  if (quantityMove===0 && qmx===0){
+  if (quantityMove===0 && qmx===0 && tp===0){
     document.querySelector('header').setAttribute('data-toggle', 2);
   };
   destroyItems = [];
@@ -191,20 +196,65 @@ function mix() {//кнопка перемешать
   };
 };//конец функции mix
 
-generateLevel ();
+function addElemToSwap(x, y){swapElem.push(cubes[x][y])};
 
-canvas.addEventListener("click", function(e) {//определяет кубик по которому кликнули
+function swap(event){
+  if (tp>0){
+    let posx = event.pageX - this.offsetLeft,
+      	posy = event.pageY - this.offsetTop,
+      	mouseY = Math.floor(posy/(canvas.height/h)),
+      	mouseX = Math.floor(posx/(canvas.width/w));
+    addElemToSwap(mouseX, mouseY);
+    document.querySelector('html').classList.remove('portal');
+    document.querySelector('html').classList.add('portal2');
+    swapCount++;
+    if (swapCount===2){
+      console.log(swapElem)
+      let ji = swapElem[0].img.src;
+      swapElem[0].img.src = swapElem[1].img.src
+      swapElem[1].img.src = ji;
+      document.querySelector('html').classList.remove('portal2');
+      canvas.removeEventListener("click", swap);
+      canvas.addEventListener("click", play);
+      swapElem = [];
+      document.querySelector('#quantitySwap').innerHTML = --tp;
+    };
+    checkMove();
+  } else {
+    alert(`У вас закончилось количество попыток для телепортации, но у вас ещё есть ${quantityMove} ` + `${quantityMove > 9 & quantityMove < 15 ? 'ходов' :
+    quantityMove.toString().slice(-1) === 1 ? "ход" :
+    quantityMove.toString().slice(-1) > 4 ||
+    quantityMove.toString().slice(-1) === 0 ? 'ходов' : "хода"}`);
+  };
+};//конец функции swap
+
+function play(event) {//определяет кубик по которому кликнули
   if (toggle == 1){
-  	let posx = e.pageX - this.offsetLeft,
-      	posy = e.pageY - this.offsetTop,
+  	let posx = event.pageX - this.offsetLeft,
+      	posy = event.pageY - this.offsetTop,
       	mouseY = Math.floor(posy/(canvas.height/h)),
       	mouseX = Math.floor(posx/(canvas.width/w));
     destroyCubes(mouseX, mouseY);
     checkMove();
   };
+};//конец функции play
+
+generateLevel ();
+
+canvas.addEventListener("click", play);
+
+document.querySelector('#mix').addEventListener('click', function() {
+  if (toggle == 1){
+  mix()};
 });
 
-document.querySelector('#mix').addEventListener('click', function(e) {mix()});
+document.querySelector('#swap').addEventListener('click', function() {
+  if (toggle == 1){
+  document.querySelector('html').classList.add('portal');
+  canvas.removeEventListener("click", play);
+  swapCount = 0;
+  canvas.addEventListener("click", swap)};
+});
 
 var dt = 0;
 document.querySelector('#pause__btn').addEventListener('click', function() {
@@ -215,8 +265,10 @@ document.querySelector('#pause__btn').addEventListener('click', function() {
 document.querySelector('.Next').addEventListener('click', function() {
   maxScore += 11;//нужное количество очков для победы
   quantityMix += 1;//количество перемешиваний
+  quantitySwap += 1;//количество порталов
   moveBalance += 2;//остаток ходов
   qmx = quantityMix;
+  tp = quantitySwap;
   mbc = moveBalance;
   dt = 0;//убрать паузу
   lvl++;
@@ -225,6 +277,7 @@ document.querySelector('.Next').addEventListener('click', function() {
 
 document.querySelector('.Replay').addEventListener('click', function() {
   qmx = quantityMix;
+  tp = quantitySwap;
   mbc = moveBalance;
   generateLevel ();
 });
