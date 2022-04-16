@@ -209,7 +209,6 @@ function swap(event){
     document.querySelector('html').classList.add('portal2');
     swapCount++;
     if (swapCount===2){
-      console.log(swapElem)
       let ji = swapElem[0].img.src;
       swapElem[0].img.src = swapElem[1].img.src
       swapElem[1].img.src = ji;
