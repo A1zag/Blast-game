@@ -285,13 +285,13 @@ main {
     margin: 0px;
 }
 
-.mix_block {
+.skill_block {
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
 }
 
-button#mix {
+.skill_block button {
     width: 235px;
     border: 0;
 }
@@ -353,3 +353,10 @@ header[data-toggle="0"] .pause {
     z-index: 1;
 }
 /*--------------------*/
+
+.portal{
+	cursor: url(../img/cursor/portal.png), auto;
+}
+.portal2{
+	cursor: url(../img/cursor/portal2.png), auto;
+}
