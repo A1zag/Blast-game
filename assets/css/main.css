@@ -355,8 +355,8 @@ header[data-toggle="0"] .pause {
 /*--------------------*/
 
 .portal{
-	cursor: url(../img/cursor/portal.png), auto;
+	cursor: url(../img/cursor/portal.png) 16 16, auto;
 }
 .portal2{
-	cursor: url(../img/cursor/portal2.png), auto;
+	cursor: url(../img/cursor/portal2.png) 16 16, auto;
 }
