@@ -196,15 +196,13 @@ function mix() {//кнопка перемешать
   };
 };//конец функции mix
 
-function addElemToSwap(x, y){swapElem.push(cubes[x][y])};
-
 function swap(event){
   if (tp>0){
     let posx = event.pageX - this.offsetLeft,
       	posy = event.pageY - this.offsetTop,
       	mouseY = Math.floor(posy/(canvas.height/h)),
       	mouseX = Math.floor(posx/(canvas.width/w));
-    addElemToSwap(mouseX, mouseY);
+    swapElem.push(cubes[mouseX][mouseY]);
     document.querySelector('html').classList.remove('portal');
     document.querySelector('html').classList.add('portal2');
     swapCount++;
@@ -212,6 +210,10 @@ function swap(event){
       let ji = swapElem[0].img.src;
       swapElem[0].img.src = swapElem[1].img.src
       swapElem[1].img.src = ji;
+      for(let item of swapElem) {
+        item.draw();
+      };
+
       document.querySelector('html').classList.remove('portal2');
       canvas.removeEventListener("click", swap);
       canvas.addEventListener("click", play);
