@@ -264,7 +264,7 @@ document.querySelector('#pause__btn').addEventListener('click', function() {
 });
 
 document.querySelector('.Next').addEventListener('click', function() {
-  maxScore += 11;//нужное количество очков для победы
+  maxScore += 13;//нужное количество очков для победы
   quantityMix += 1;//количество перемешиваний
   quantitySwap += 1;//количество порталов
   moveBalance += 2;//остаток ходов
